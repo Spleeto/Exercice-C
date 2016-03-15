@@ -65,7 +65,16 @@ def recupCoord(lettre,liste):
                 return (i,j)
 
 def swapCouple(couple1,couple2):
-
+    i,j = couple1
+    x,y = couple2
+    i,j,x,y = i,y,x,j
+    if x == 5:
+        x=1
+        i+=1
+    if i == 5:
+        i=1
+        x+=1
+    return i,j,x,y
     
 liste = input("Liste : ")
 verifListe(liste)
