@@ -62,12 +62,16 @@ def recupCoord(lettre,liste):
             j += 1
         for y in range(len(liste[x])):
             if liste[x][y] == lettre:
-                return i,j
+                return (i,j)
+
+def swapCouple(couple1,couple2):
+
     
 liste = input("Liste : ")
 verifListe(liste)
 lettre = input("Lettre : ")
-print(recupCoord(lettre,liste))
-
+lettre2 = input("Lettre : ")
+#print(recupCoord(lettre,liste))
+swapCouple(recupCoord(lettre,liste),recupCoord(lettre2,liste))
 #chaine = input("Chaine : ")
 #tailleChaine(bigramme(remplacerW(chaine)))
