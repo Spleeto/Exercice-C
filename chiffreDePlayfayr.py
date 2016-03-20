@@ -1,3 +1,6 @@
+from string import ascii_uppercase
+import sys
+
 def remplacerW(chaine):
     chaineSansW = chaine.replace("w","v")
     return chaineSansW
@@ -62,25 +65,26 @@ def recupCoord(lettre,liste):
             j += 1
         for y in range(len(liste[x])):
             if liste[x][y] == lettre:
-                return (i,j)
+                return ([i,j])
 
 def swapCouple(couple1,couple2):
-    i,j = couple1
-    x,y = couple2
-    i,j,x,y = i,y,x,j
-    if x == 5:
-        x=1
-        i+=1
-    if i == 5:
-        i=1
-        x+=1
-    return i,j,x,y
-    
-liste = input("Liste : ")
-verifListe(liste)
-lettre = input("Lettre : ")
-lettre2 = input("Lettre : ")
+    if couple1[0] == couple2[0]:
+        couple1[1] = (couple1[1] + 1) % 5
+        couple2[1] = (couple2[1] + 1) % 5
+    elif couple1[1] == couple2[1]:
+        couple1[0] = (couple1[0] + 1) % 5
+        couple1[0] = (couple2[0] + 1) % 5
+    else:
+        couple1[1], couple2[1] = couple2[1], couple1[1]
+    return(couple1, couple2)
+
+
+text = input("Le texte : ")
+cle = input("La clé : ")
+verifListe(cle)
+#lettre = input("Lettre : ")
+#lettre2 = input("Lettre : ")
 #print(recupCoord(lettre,liste))
-swapCouple(recupCoord(lettre,liste),recupCoord(lettre2,liste))
+#swapCouple(recupCoord(lettre,liste),recupCoord(lettre2,liste))
 #chaine = input("Chaine : ")
 #tailleChaine(bigramme(remplacerW(chaine)))
